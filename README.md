@@ -4,19 +4,19 @@ An end-to-end pipeline that fetches live SPY option chains, prices them with thr
 
 ## Motivation
 
-Black-Scholes assumes constant volatility across strikes — a known failure. Real markets exhibit a **volatility smile/skew**: OTM puts trade at higher implied vol than ATM options, and OTM calls trade lower. The question this project asks: can a machine learning model learn and correct for this systematic BS mispricing?
+Black-Scholes assumes constant volatility across strikes; a known failure. Real markets exhibit a **volatility smile/skew**: OTM puts trade at higher implied vol than ATM options, and OTM calls trade lower. The question this project asks: can a machine learning model learn and correct for this systematic BS mispricing?
 
 ## Models
 
 | Model | Description |
 |---|---|
 | **Flat-vol Black-Scholes** | Merton (1973) formula with continuous dividend yield. Flat vol calibrated per-expiry from ATM implied vols. Serves as the theory baseline. |
-| **Brute-force RF** | Random Forest trained directly on option mid prices. No financial theory — pure data-driven baseline. |
+| **Brute-force RF** | Random Forest trained directly on option mid prices. No financial theory; pure data-driven baseline. |
 | **Theory-informed RF** | RF trained on BS *residuals* (mid − BS price), then adds back the BS price. Separates what BS gets right from what it gets wrong. |
 
 ## Results
 
-Test set: held-out expiry 2026-12-31 (272 options, temporal split — no lookahead).
+Test set: held-out expiry 2026-12-31 (272 options, temporal split; no lookahead).
 
 ### Overall
 
@@ -37,7 +37,7 @@ Test set: held-out expiry 2026-12-31 (272 options, temporal split — no lookahe
 | ATM puts (0.98–1.02) | 1.67 | 2.2% |
 | ITM puts (K/S > 1.02) | 3.14 | 1.7% |
 
-The largest gains over BS are on OTM options — exactly where vol skew causes the most systematic mispricing.
+The largest gains over BS are on OTM options; exactly where vol skew causes the most systematic mispricing.
 
 ## Data & Methodology
 
@@ -68,7 +68,7 @@ Median across valid pairs gives the effective spot the options market is pricing
 
 **Known limitations**
 - Single cross-section: all data fetched on one day. The temporal split by expiry tests vol surface interpolation, not true multi-day generalisation.
-- Brute-force RF shows systematic negative bias on ITM options — sparse training signal in that region causes mean reversion toward ATM prices.
+- Brute-force RF shows systematic negative bias on ITM options; sparse training signal in that region causes mean reversion toward ATM prices.
 - MAPE is misleading across moneyness buckets; RMSE ($) is the primary metric.
 
 ## Project Structure
