@@ -1,0 +1,10 @@
+{
+  "pythonVersion": "3.9",
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": [
+    "src/data/models"
+  ],
+  "reportMissingImports": "warning",
+  "reportMissingModuleSource": "none"
+}
