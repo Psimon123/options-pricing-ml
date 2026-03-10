@@ -56,7 +56,7 @@ Median across valid pairs gives the effective spot the options market is pricing
 - Options with mid price < $1.00 dropped (bid/ask spread often exceeds price)
 - Mid price = bid/ask midpoint where both quotes available, else last price
 
-**Training / test split** — Temporal: train on all expiries before the test expiry, evaluate on a single held-out expiry. Last expiry excluded entirely to avoid any forward-looking contamination.
+**Training / test split** : Temporal: train on all expiries before the test expiry, evaluate on a single held-out expiry. Last expiry excluded entirely to avoid any forward-looking contamination.
 
 **Features (RF models)**
 - `moneyness` — K/S
