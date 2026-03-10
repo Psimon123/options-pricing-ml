@@ -117,23 +117,23 @@ def main() -> None:
     print("=" * 70)
     m_bs, m_br, m_th = metrics(bs), metrics(brute), metrics(theor)
     print_metrics("Black-Scholes (flat vol)", m_bs)
-    print_metrics("Brute-force RF",           m_br)
-    print_metrics("Theory-informed RF",       m_th)
+    print_metrics("Brute-force RF", m_br)
+    print_metrics("Theory-informed RF", m_th)
 
     print("\n" + "=" * 70)
     print("BY KIND × MONEYNESS  (RMSE in $, MAPE meaningful within-bucket only)")
     print("=" * 70)
     bkt = pd.concat([
-        bucket_report("BS",     bs),
-        bucket_report("Brute",  brute),
+        bucket_report("BS", bs),
+        bucket_report("Brute", brute),
         bucket_report("Theory", theor),
     ])
     print(bkt[["model", "bucket", "rmse", "mape", "bias", "n"]].to_string(index=False))
 
     summary = pd.DataFrame([
         {"model": "black_scholes_flat_vol", **m_bs},
-        {"model": "brute_force_rf",         **m_br},
-        {"model": "theory_informed_rf",     **m_th},
+        {"model": "brute_force_rf", **m_br},
+        {"model": "theory_informed_rf", **m_th},
     ])
     summary.to_csv(os.path.join(PROC, "metrics_summary.csv"), index=False)
     print(f"\nWrote metrics_summary.csv")
