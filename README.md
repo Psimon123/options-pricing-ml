@@ -12,7 +12,7 @@ Black-Scholes assumes constant volatility across strikes; a known failure. Real 
 |---|---|
 | **Flat-vol Black-Scholes** | Merton (1973) formula with continuous dividend yield. Flat vol calibrated per-expiry from ATM implied vols. Serves as the theory baseline. |
 | **Brute-force RF** | Random Forest trained directly on option mid prices. No financial theory; pure data-driven baseline. |
-| **Theory-informed RF** | RF trained on BS *residuals* (mid − BS price), then adds back the BS price. Separates what BS gets right from what it gets wrong. |
+| **Theory-informed RF** | RF trained on BS residuals (mid − BS price), then adds back the BS price. Separates what BS gets right from what it gets wrong. |
 
 ## Results
 
