@@ -41,7 +41,7 @@ The largest gains over BS are on OTM options; exactly where vol skew causes the 
 
 ## Data & Methodology
 
-**Spot price derivation** — Rather than using yfinance's potentially stale last price, spot is derived from put-call parity across ATM strike pairs on the nearest liquid expiry:
+**Spot price derivation** : Rather than using yfinance's potentially stale last price, spot is derived from put-call parity across ATM strike pairs on the nearest liquid expiry:
 
 ```
 S = (C − P + K·exp(−r·T)) / exp(−q·T)
