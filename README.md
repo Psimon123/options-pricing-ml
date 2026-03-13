@@ -59,7 +59,7 @@ loader.py → preprocess.py → models → compare_models.py
 
 **Step 2: Preprocess (preprocess.py).** Computes mid price from bid/ask where available, drops illiquid and sub-$1 options, adds time to expiry T in years, and writes the clean dataset to `data/processed/dataset.csv`.
 
-**Step 3: Price (models/).** Three models run independently on the same dataset and each writes its predictions to `data/processed/`.
+**Step 3: Price (models).** Three models run independently on the same dataset and each writes its predictions to `data/processed/`.
 
 **Step 4: Evaluate (compare_models.py).** Merges all three model outputs with market prices, computes RMSE, MAPE, bias, and R² overall and by moneyness bucket, and prints a structured report.
 
